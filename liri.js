@@ -3,13 +3,20 @@ var fs = require("fs");
 
 fs.writeFile("random.txt", "")
 
+//The code needed to grab the data from keys.js for #7
+var keys = require("./keys");
+
 //Store the textfile filename given to us from the command line.
 var twitter = require("twitter");
 var spotify = require("spotify");
 var inquirer = require("inquirer");
-var keys = require("./keys");
+var liriCommand = process.argv[2];
 
-var textFile = process.argv[2];
+switch (twitter) {
+	case "tweet":
+		tweet();
+		break;
+}
 
 //Twitter username inside of a parameter object.
 var params = {
