@@ -47,8 +47,6 @@ var params = {
 		if (!error) {
 			console.log(tweets);
 		}
-// } && {
-// 	count: 20
 	});
 };
 
@@ -60,16 +58,28 @@ var spotifyClient = new Spotify ({
 	client_secret: client_secret.spotifyKeys.client_secret
 });
 
-	//get an artist
-spotifyApi.getArtist("")
-	.then(function(data) {
-		console.log("Artist information", data.body);
-	}, function(err) {
-		console.error(err);
-	});
-};
+	//search for an artist, album, or track.
+var Spotify = require('node-spotify-api');
+ 
+var spotify = new Spotify({
+  id: "6f4aaed4a45c4355b8f5b3e16da0ce5c",
+  secret: "1c37838e46904e7385237f1f677203ba"
+});
+ 
+spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+ 
+console.log(data); 
+});
 
-//get song name
+
+
+//a preview link of the song from Spotify
+//the album that the song is from
+//If no song is provided then the program will default to "The Sign" by Ace of Base.
+//
 
 // //Append the contents into the file.
 // fs.appendFile(randomtxt, "", function(err) {
