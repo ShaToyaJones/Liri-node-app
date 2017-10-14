@@ -8,6 +8,7 @@ var keys = require("./keys.js");
 //Store the textfile filename given to us from the command line.
 var twitter = require("twitter");
 var spotify = require("spotify");
+var omdb = require("omdb");
 var inquirer = require("inquirer");
 var liriCommand = process.argv[2];
 
@@ -52,12 +53,6 @@ var params = {
 
 function getSpotify() {
 
-// var spotifyClient = new Spotify ({
-
-// 	client_id: keys.spotifyKeys.client_id,
-// 	client_secret: client_secret.spotifyKeys.client_secret
-// });
-
 //search for an artist, album, or track.
 var Spotify = require("node-spotify-api");
  
@@ -66,7 +61,7 @@ var spotify = new Spotify({
   client_secret: keys.spotifyKeys.client_secret
 });
  
-spotify.search({ type: "track", query: "All the Small Things" }, function(err, data) {
+spotify.search({ type: "track", query: song }, function(err, data) {
   if (err) {
     return console.log("Error occurred: " + err);
   }
@@ -74,8 +69,41 @@ spotify.search({ type: "track", query: "All the Small Things" }, function(err, d
 console.log(data); 
 });
 
+//A preview link of the song from Spotify.
 
-//a preview link of the song from Spotify
-//the album that the song is from
+//The album that the song is from.
+
 //If no song is provided then the program will default to "The Sign" by Ace of Base.
-//
+
+function getOmbd() {
+	omdb.search({
+	    search: "game of thrones", 
+	    // optionnal  ['series', 'episode', 'movie'] 
+	    type: "series",
+	    year: "2011", 
+	    // optionnal (1 to 100)
+	    page: "1" 
+	}).then(res => {
+	    console.log("got response:", res);
+	}).catch(console.error);
+	 
+	omdb.get({
+	    id: "tt0944947",            // optionnal (requires imdbid or title) 
+	    title: "Game of Thrones",   // optionnal (requires imdbid or title) 
+	    season: 1,                  // optionnal 
+	    episode: 1,                 // optionnal 
+	    // optionnal ['series', 'episode', 'movie']
+	    type: "series",
+	    plot: "full",               // optionnal (defaults to 'short') 
+	    // optionnal (get rotten tomatoes ratings)
+	    tomatoes: true,
+	    year: "2011"
+	}).then(res => {
+	    console.log('got response:', res);
+	}).catch(console.error);
+}
+
+// *****************Need to add:*************
+//Country where the movie was produced.
+// Language of the movie.
+// Actors in the movie.

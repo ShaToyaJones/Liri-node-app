@@ -12,5 +12,10 @@ var spotifyKeys = {
 	consumer_secret: "1c37838e46904e7385237f1f677203ba",
 }
 
+var omdbKeys = {
+	api_key: "40e9cece"
+}
+
 module.exports = twitterKeys;
 module.exports = spotifyKeys;
+module.exports = omdbKeys;
