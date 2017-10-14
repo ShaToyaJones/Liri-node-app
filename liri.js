@@ -1,8 +1,6 @@
 //Grab the fs package to handle read/write. 
 var fs = require("fs");
 
-fs.writeFile("random.txt", "")
-
 //The code needed to grab the data from keys.js for #7
 var keys = require("./keys.js");
 
@@ -52,6 +50,25 @@ var params = {
 // 	count: 20
 	});
 };
+
+function getSpotify() {
+
+var spotifyClient = new Spotify ({
+
+	client_id: keys.spotifyKeys.client_id,
+	client_secret: client_secret.spotifyKeys.client_secret
+});
+
+	//get an artist
+spotifyApi.getArtist()
+	.then(function(data) {
+		console.log("Artist information", data.body);
+	}, function(err) {
+		console.error(err);
+	});
+};
+
+//get song name
 
 // //Append the contents into the file.
 // fs.appendFile(randomtxt, "", function(err) {
