@@ -1,5 +1,6 @@
 //Grab the fs package to handle read/write. 
 var fs = require("fs");
+var request = require("request");
 
 //The code needed to grab the data from keys.js for #7
 var keys = require("./keys.js");
@@ -60,7 +61,7 @@ var spotifyClient = new Spotify ({
 });
 
 	//get an artist
-spotifyApi.getArtist()
+spotifyApi.getArtist("")
 	.then(function(data) {
 		console.log("Artist information", data.body);
 	}, function(err) {
