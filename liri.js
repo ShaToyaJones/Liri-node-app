@@ -62,8 +62,8 @@ function getSpotify() {
 var Spotify = require("node-spotify-api");
  
 var spotify = new Spotify({
-  consumer_id: "6f4aaed4a45c4355b8f5b3e16da0ce5c",
-  consumer_secret: "1c37838e46904e7385237f1f677203ba"
+  consumer_id: keys.spotifyKeys.consumer_id,
+  consumer_secret: keys.spotifyKeys.consumer_secret
 });
  
 spotify.search({ type: "track", query: "All the Small Things" }, function(err, data) {
