@@ -56,7 +56,7 @@ function getSpotify() {
 //search for an artist, album, or track.
 var Spotify = require("node-spotify-api");
  
-var spotify = new Spotify({
+var Spotify = new Spotify({
   client_id: keys.spotifyKeys.client_id,
   client_secret: keys.spotifyKeys.client_secret
 });
@@ -75,7 +75,14 @@ console.log(data);
 
 //If no song is provided then the program will default to "The Sign" by Ace of Base.
 
-function getOmbd() {
+function getOmdb() {
+
+	const omdb = reqire("omdbapi");
+
+	var omdb = new omdb({
+		client_id: keys.omdbKeys.client_id
+	});
+
 	omdb.search({
 	    search: "game of thrones", 
 	    // optionnal  ['series', 'episode', 'movie'] 
@@ -88,14 +95,13 @@ function getOmbd() {
 	}).catch(console.error);
 	 
 	omdb.get({
-	    id: "tt0944947",            // optionnal (requires imdbid or title) 
 	    title: "Game of Thrones",   // optionnal (requires imdbid or title) 
 	    season: 1,                  // optionnal 
 	    episode: 1,                 // optionnal 
 	    // optionnal ['series', 'episode', 'movie']
 	    type: "series",
 	    plot: "full",               // optionnal (defaults to 'short') 
-	    // optionnal (get rotten tomatoes ratings)
+	    // optionnal (get rotten tomatoes ratings)	    
 	    tomatoes: true,
 	    year: "2011"
 	}).then(res => {
