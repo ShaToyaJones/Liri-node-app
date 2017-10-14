@@ -52,45 +52,30 @@ var params = {
 
 function getSpotify() {
 
-var spotifyClient = new Spotify ({
+// var spotifyClient = new Spotify ({
 
-	client_id: keys.spotifyKeys.client_id,
-	client_secret: client_secret.spotifyKeys.client_secret
-});
+// 	client_id: keys.spotifyKeys.client_id,
+// 	client_secret: client_secret.spotifyKeys.client_secret
+// });
 
-	//search for an artist, album, or track.
-var Spotify = require('node-spotify-api');
+//search for an artist, album, or track.
+var Spotify = require("node-spotify-api");
  
 var spotify = new Spotify({
-  id: "6f4aaed4a45c4355b8f5b3e16da0ce5c",
-  secret: "1c37838e46904e7385237f1f677203ba"
+  consumer_id: "6f4aaed4a45c4355b8f5b3e16da0ce5c",
+  consumer_secret: "1c37838e46904e7385237f1f677203ba"
 });
  
-spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+spotify.search({ type: "track", query: "All the Small Things" }, function(err, data) {
   if (err) {
-    return console.log('Error occurred: ' + err);
+    return console.log("Error occurred: " + err);
   }
  
 console.log(data); 
 });
 
 
-
 //a preview link of the song from Spotify
 //the album that the song is from
 //If no song is provided then the program will default to "The Sign" by Ace of Base.
 //
-
-// //Append the contents into the file.
-// fs.appendFile(randomtxt, "", function(err) {
-	
-// 	//If an error is experienced we display it here:
-// 	if (err) {
-// 		console.log(err);
-// 	}
-
-// 	//If no error is experienced we'll log this phrase "Content Added".
-// 	else {
-// 		console.log("Content Added!");
-// 	}
-// });
